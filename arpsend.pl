@@ -55,7 +55,7 @@ close RAW;
 # Ugly but simple way to get the interface index from its name
 sub ifname_to_index {
     my $ifname = shift;
-    open (FH, "< /sys/class/net/$ifname/ifindex") or die "Iface not found\n";
+    open (FH, "< /sys/class/net/$ifname/ifindex") or die "ifindex open: $!";
     chomp (my $ifindex = <FH>);
     close FH;
     return $ifindex;
